@@ -8,7 +8,7 @@ function lastKnums(n, k){
 
     }
 
-    console.log(arr.join(' '));
+    return arr;
 }
 
 lastKnums(8, 2)
