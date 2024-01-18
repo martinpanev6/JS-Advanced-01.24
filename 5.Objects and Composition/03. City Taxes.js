@@ -1,11 +1,11 @@
 function cityTaxes(name, population, treasury){
-    let result = {
-        name: name,
-        population: population,
-        treasury: treasury,
+    const result = {
+        name,
+        population,
+        treasury,
         taxRate: 10,
-        collectTaxes (){
-            this.treasury += population;
+        collectTaxes(){
+            this.treasury += this.population * this.taxRate;
         },
         applyGrowth(percentage){
             this.population += Math.floor(this.population * percentage / 100);
