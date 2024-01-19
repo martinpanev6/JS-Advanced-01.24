@@ -17,7 +17,7 @@ function countEqualNeighborPairs(matrix) {
         }
     }
 
-    console.log(equalPairsCount);
+    return equalPairsCount;
 }
 countEqualNeighborPairs([['2', '3', '4', '7', '0'],
 

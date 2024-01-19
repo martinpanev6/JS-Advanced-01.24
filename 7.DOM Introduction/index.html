@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello DOM!</h1>
+    <ul>
+        <li>DOM Properties</li>
+        <li>DOM Methods</li>
+        <li>DOM Events</li>
+    </ul>
+    <script>
+        function edit(element, match, replacer){
+
+            let content = element.textContent;
+           element.textContent = content.split(match).join(replacer);
+        }
+    </script>
+</body>
+</html>
