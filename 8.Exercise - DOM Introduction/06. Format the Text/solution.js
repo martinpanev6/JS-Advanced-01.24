@@ -1,3 +1,4 @@
 function solve() {
-  //TODO
+  const input = document.getElementById('input');
+  const sentences = input.split('.');
 }
