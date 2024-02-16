@@ -1,27 +1,32 @@
-function ticketsStatistics(arrOfTickets, sortingCriteria){
+function juices(collection) {
+    let juice = {};
+    let mapJuices = new Map();
 
-    let result = [];
-
-    class Ticket{
-        constructor(destination, price, status){
-            this.destination = destination;
-            this.price = Number(price);
-            this.status = status;
+    for (let fruitArr of collection) {
+        let [fruit, quantity] = fruitArr.split(' => ');
+        quantity = Number(quantity);
+        if (!juice.hasOwnProperty(fruit)) {
+            juice[fruit] = {
+                quantity
+            }
+        } else {
+            juice[fruit].quantity += quantity;
         }
-        static sort(result, sortingCriteria){
-            return result.sort((a, b) => {
-                return sortingCriteria === "price" ?
-                a[sortingCriteria] - b[sortingCriteria] :
-                a[sortingCriteria].localeCompare(b[sortingCriteria])});
+
+
+        if (juice[fruit].quantity >= 1000) {
+            let bottles = 0;
+            if (mapJuices.has(fruit)) {
+                bottles = Math.floor(juice[fruit].quantity / 1000);
+                mapJuices.set(fruit, mapJuices.get(fruit) + bottles);
+            } else {
+                bottles = Math.floor(juice[fruit].quantity / 1000)
+                mapJuices.set(fruit, bottles);
+            }
+            juice[fruit].quantity %= 1000;
         }
     }
-
-    for(let line of arrOfTickets){
-        let [destination, price, status] = line.split("|");
-        let myTicket = new Ticket(destination, price, status);
-        result.push(myTicket);
+    for(let [fruit, quantity] of mapJuices) {
+        console.log(`${fruit} => ${quantity}`);
     }
-
-    return Ticket.sort(result, sortingCriteria);
-
 }
